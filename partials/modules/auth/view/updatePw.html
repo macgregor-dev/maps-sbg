@@ -1,0 +1,40 @@
+<section >
+  <md-list layout-padding layout="column" layout-align="start center" flex>
+    <md-list-item class="md-1-line" >
+      <h4>Update your password</h4>
+    </md-list-item>
+      <md-list-item class="md-1-line" >
+        <md-input-container>
+          <label>Email</label>
+          <input type="email" name='username' ng-model='email' ng-required='true'>
+        </md-input-container>
+      </md-list-item>
+      <md-list-item class="md-1-line" >
+        <md-input-container>
+          <label>Password</label>
+          <input type='password' ng-model='pwd' required>
+        </md-input-container>
+      </md-list-item>
+    <md-list-item class="md-1-line" >
+      <md-button class='md-raised md-primary' ng-click='loginUser()'>Login</md-button>
+    </md-list-item>
+    <md-list-item class="md-1-line">
+        <h4>New Users - please enter a valid email address</h4>
+    </md-list-item>
+    <md-list-item class="md-1-line" >
+      <md-input-container>
+        <label>Email</label>
+        <input name='email' type="email" ng-model='email' ng-required='true' ng-disabled="justRego" >
+      </md-input-container>
+    </md-list-item>
+    <md-list-item class="md-1-line" >
+      <md-button class='md-raised md-primary' ng-click='registerUser()' ng-disabled="isRegoing || justRego">Register</md-button>
+    </md-list-item>
+    <md-list-item ng-show='isRegoing' >
+      <md-progress-circular md-mode="indeterminate" ng-show='isRegoing' ></md-progress-circular>
+    </md-list-item>
+    <md-list-item class="md-1-line" ng-show="justRego">
+      <h4>You have successfully registered! Please check your email for your temporary password.</h4>
+    </md-list-item>
+  </md-list>
+</section>

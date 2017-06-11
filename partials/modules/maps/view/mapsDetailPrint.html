@@ -1,0 +1,95 @@
+<h2>{{ headerTitle }} </h2>
+<div ng-repeat='printData in printList'>
+  <table style='width:100%;'>
+    <thead>
+      <tr class='rowEven'>
+        <th style='width:4%'>
+          Done
+        </th>
+        <th style='width:4%'>
+          NtCH
+        </th>
+        <th style='width:4%'>
+          DNC
+        </th>
+        <th style='width:4%'>
+          PW
+        </th>
+        <th style='width:4%'>
+          NH2
+        </th>
+        <th style='width:4%'>
+          NH1
+        </th>
+        <th style='width:4%'>
+          Unit
+        </th>
+        <th style='width:4%'>
+          House
+        </th>
+        <th>
+          Address
+        </th>
+        <th >
+          Suburb
+        </th>
+        <th style='width:10%'>
+          UBD
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="mapAddress in printData.addresses" ng-class-odd="'rowOdd'" ng-class-even="'rowEven'" >
+        <td align='center'><span ng-if="mapObj.assgn.address[mapAddress.addId] == 1">X</span></td>
+        <td align='center'><span ng-if="mapObj.assgn.address[mapAddress.addId] == 2">X</span></td>
+        <td align='center'><span ng-if="mapObj.assgn.address[mapAddress.addId] == 5">X</span></td>
+        <td align='center'><span ng-if="mapObj.assgn.address[mapAddress.addId] == 6">X</span></td>
+        <td align='center'><span ng-if="mapObj.assgn.address[mapAddress.addId] == 4">X</span></td>
+        <td align='center'><span ng-if="mapObj.assgn.address[mapAddress.addId] == 3">X</span></td>
+        <td>{{mapAddress.addData.unit == -9 ? '' : mapAddress.addData.unit}}</td>
+        <td>{{mapAddress.addData.hnum}}</td>
+        <td>{{mapAddress.addData.st}}</td>
+        <td>{{mapAddress.addData.burb}}</td>
+        <td>{{mapAddress.addData.ubd}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+</div>
+<div layout='row'>
+  <div flex>
+    <span class='md-body-2'>Map ID: {{ mapObj.mapId }} </span>
+  </div>
+  <div flex>
+    <span class='md-body-2'>Started: {{ mapObj.assgn.started | date:'dd MMM yyyy' }} </span>
+  </div>
+  <div flex>
+    <span class='md-body-2'>Please return to: {{ mapObj.assgn.owner.name }}</span>
+  </div>
+  <div flex>
+    <span class='md-body-2'>Do not use after: {{ mapObj.assgn.expiry | date:'dd MMM yyyy' }}</span>
+  </div>
+</div>
+<br/><br/>
+<table style='width:100%'>
+  <tr style='font-size:10px;'>
+    <td>
+      Legend:
+    </td>
+    <td>
+      NtCH - 不會說中文
+    </td>
+    <td>
+      DNC - Do Not Call
+    </td>
+    <td>
+      PW -  Phone/Letter
+    </td>
+    <td>
+      NH2 - Not at Home 2
+    </td>
+    <td>
+      NH1 - Not at Home 1
+    </td>
+  </tr>
+</table>

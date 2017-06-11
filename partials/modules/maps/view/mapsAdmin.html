@@ -1,0 +1,24 @@
+<md-toolbar layout="row" class="md-whiteframe-z1">
+  <md-button class="menu" show ng-click="toggleSideNav()" aria-label="Show Side Navigation"  ng-show="showSideNav">
+    <md-icon md-svg-icon="menu" ></md-icon>
+  </md-button>
+  <h1>{{ $rootScope.headerTitle }} </h1>
+</md-toolbar>
+<md-divider></md-divider>
+<div layout="column"> 
+  <md-content>
+    <section>
+      <md-input-container>
+        <label>Value</label>
+        <input type="text" name='csvVal' ng-model='csvVal' ng-required='true' >
+      </md-input-container>
+      <md-input-container>
+        <label>FB URL</label>
+        <input type="text" name='fbUrl' ng-model='fbUrl' ng-required='true' >
+      </md-input-container>
+      <md-button class="md-fab md-accent" ng-click='csvToArray()' title='CSV To Array'>
+        <md-icon md-svg-icon='save'></md-icon>
+      </md-button>
+    </section>
+  </md-content>
+</div>

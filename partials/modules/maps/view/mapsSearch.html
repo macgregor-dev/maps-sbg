@@ -1,0 +1,112 @@
+<md-toolbar layout="row" class="md-whiteframe-z1">
+  <md-button class="menu" show ng-click="toggleSideNav()" aria-label="Show Side Navigation"  ng-show="showSideNav">
+    <md-icon md-svg-icon="menu" ></md-icon>
+  </md-button>
+  <h1>{{ $rootScope.headerTitle }} </h1>
+</md-toolbar>
+<md-divider></md-divider>
+<md-toolbar md-scroll-shrink ng-show="partialTitle" >
+  <!-- layout-align='center center' layout='row' -->
+  <div class="md-toolbar-tools"  >
+    <span >{{ partialTitle }}</span>
+  </div>
+</md-toolbar>
+<div ng-cloak> 
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Maps">
+        <form id='searchMapForm' ng-submit='findMap()'>
+          <div layout='row' layout-align='center center'  layout-fill>
+            <div flex='20'>
+              <md-input-container layout='row' layout-fill>
+                <label>Map Name</label>
+                <input type="text" name='csvVal' ng-model='mapSearchTerm' autofocus/>
+              </md-input-container>
+            </div>
+            <div>
+              <md-button  class="md-primary md-raised" ng-click='findMap()' title='Find Map'>Find Map</md-button>
+            </div>
+          </div>
+        </form>
+        <!-- Map Search Results -->
+        <div layout='column'  layout-padding layout='column' flex='grow'>
+          <md-progress-circular class="md-primary" md-mode="indeterminate" ng-if="searching" ></md-progress-circular>
+          <md-list ng-if='searchRes' > 
+            <md-list-item class='rowEven'>
+              <div flex-order='1' flex='80' >
+                <strong>Map Name</strong>
+              </div>
+              <div flex-order='2' flex='20'>
+                <strong>Field Service Group</strong>
+              </div>
+            </md-list-item>
+            <md-list-item ng-repeat="res in searchRes" ng-class-odd="'rowOdd'" ng-class-even="'rowEven'">
+              <div flex-order="1" flex='80' >
+                <a ng-href='#/maps/detail/{{res.key}}' target="mapDetail">{{res.value.terId}} - {{res.value.name}}</a>
+              </div>
+              <div flex-order="2" flex='20' >
+                {{res.value.fsg}}
+              </div>
+            </md-list-item>
+          </md-list>
+        </div>
+      </md-tab>
+      <md-tab label="Addresses">
+        <form id='searchMapForm' ng-submit='findAddress()'>
+          <div layout='row' layout-align='center center'  layout-fill>
+            <div flex='20'>
+              <md-input-container layout='row' layout-fill>
+                <label>Street Name (don't include House/Unit)</label>
+                <input type="text" name='csvVal' ng-model='addSearchTerm' autofocus/>
+              </md-input-container>
+            </div>
+            <div>
+              <md-button  class="md-primary md-raised" ng-click='findAddress()' title='Find Address'>Find Address</md-button>
+            </div>
+          </div>
+        </form>
+        <!-- Street Search Results -->
+        <div layout='column'  layout-padding layout='column' flex='grow'>
+          <md-progress-circular class="md-primary" md-mode="indeterminate" ng-if="searching" ></md-progress-circular>
+          <md-list ng-if='addSearchRes'>
+            <md-list-item class='rowEven'>
+              <div flex-order='1' flex='5' >
+                <strong>Unit</strong>
+              </div>
+              <div flex-order='2' flex='5'>
+                <strong>House</strong>
+              </div>
+              <div flex-order='3' flex='30'>
+                <strong>Address</strong>
+              </div>
+              <div flex-order='4' flex='40'>
+                <strong>Map</strong>
+              </div>
+              <div flex-order='5' flex='20'>
+                <strong>FSG</strong>
+              </div>
+            </md-list-item>
+            <md-list-item ng-repeat="res in addSearchRes" ng-class-odd="'rowOdd'" ng-class-even="'rowEven'">
+              <div flex-order="1" flex='5'>
+                {{res.value.unit}}
+              </div>
+              <div flex-order="2" flex='5'>
+                {{res.value.hnum}}
+              </div>
+              <div flex-order="3" flex='30'>
+                {{res.value.st}}
+              </div>
+              <div flex-order="4" flex='40'>
+                <a ng-href='#/maps/detail/{{res.value.mapId}}' target="mapDetail">{{res.value.map.length > 20 ? res.value.map.substring(0,30) + '...' : res.value.map}}</a>
+              </div>
+              <div flex-order="5" flex='20'>
+                {{res.value.fsg}}
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </div>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

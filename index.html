@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+  <head>
+    <title>Macgregor</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="/css/03364556f431052dacd4b8e4f8a45f67448cd0c6.css"/>
+    
+    <script>
+      var shouldRedirHttps = false;
+      if (shouldRedirHttps) {
+        if ((window.location.hostname != 'localhost' && window.location.hostname != '127.0.0.1') && window.location.protocol != "https:")
+        window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);  
+      }
+    </script>
+  </head>
+
+  <body layout="row" ng-cloak>
+  <!-- Side Menu -->
+  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="false" ng-show="showSideNav">
+    <md-toolbar class="md-whiteframe-z1">
+      <h1 ng-show='menuTitle'>{{ menuTitle }}</h1>
+    </md-toolbar>
+    <md-list>
+      <md-list-item ng-repeat="menu in menuItems" ng-show="menuItems">
+          <md-button ng-href="{{menu.link}}" ng-class="{'selected' : menu === menuSelected }" ng-show="menu.visible">
+            {{menu.label}}
+            <md-list>
+              <md-list-item ng-repeat="submenu in menu.subMenuItems">
+                <md-button ng-href="{{submenu.link}}" ng-class="{'selected' : submenu === subMenuSelected }" ng-show="submenu.visible">
+                  {{ submenu.label }}
+                </md-button>
+              </md-list-item>
+            </md-list>
+          </md-button>
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+  <!-- Partial Container -->
+  <div flex layout="column" tabIndex="-1" role="main" ng-view>
+  </div>
+  
+  <!-- Scripts galore -->
+  <script src="./bower_components/angular/angular.js"></script>
+  <script src="./bower_components/angular-route/angular-route.js"></script>
+  <script src="./bower_components/angular-animate/angular-animate.js"></script>
+  <script src="./bower_components/angular-aria/angular-aria.js"></script>
+  <script src="./bower_components/angular-messages/angular-messages.js"></script>
+  <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="./bower_components/angular-material/angular-material.js"></script>
+  <script src="./bower_components/firebase/firebase.js"></script>
+  <script src="./bower_components/angularfire/dist/angularfire.js"></script>
+  <script src="./bower_components/rangen/rangen.js"></script>
+  <script src="./bower_components/moment/moment.js"></script>
+  
+  
+  
+    
+    <script src="/partials/modules/maps/8c91b1785de3eb62480fc38f880634b3373efdf1.js"></script>
+    
+    <script src="/partials/modules/maps/3bce845e12f180ee6e5b13ffacc44d502142342b.js"></script>
+    
+    <script src="/partials/modules/maps/65d88fe50c6bcb2518a63877c38787936c95bd5e.js"></script>
+    
+    <script src="/partials/modules/maps/79675195d39faf11ae6f8a8b5eeb8171c9b79d7d.js"></script>
+    
+    <script src="/partials/modules/maps/2d2e32bba08a234ef078929b451ba91ed991d4b5.js"></script>
+    
+  
+    
+    <script src="/partials/modules/auth/a9651e6169997b68db479c63d53dffd1918d8dcb.js"></script>
+    
+  
+    
+  <script src="/js/4f249cc01eb39289cb5f84d57455f919f3af5b03.js" type="text/javascript"></script>
+
+  </body>
+</html>
